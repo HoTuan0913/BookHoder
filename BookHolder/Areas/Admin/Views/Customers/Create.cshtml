@@ -1,0 +1,128 @@
+﻿@model BookHolder.Areas.Admin.Models.Customers
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Page Container START -->
+<div class="page-container">
+
+
+    <!-- Content Wrapper START -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="header-sub-title">
+                <nav class="breadcrumb breadcrumb-dash">
+                    <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                    <a class="breadcrumb-item" href="#">Components</a>
+                    <span class="breadcrumb-item active">Tabs</span>
+                </nav>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4>From Tạo sản phẩm</h4>
+                <div class="m-t-25">
+                    <ul class="nav nav-tabs nav-justified" id="myTabJustified" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab-justified" data-toggle="tab" href="#home-justified" role="tab" aria-controls="home-justified" aria-selected="true">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab-justified" data-toggle="tab" href="#profile-justified" role="tab" aria-controls="profile-justified" aria-selected="false">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab-justified" data-toggle="tab" href="#contact-justified" role="tab" aria-controls="contact-justified" aria-selected="false">Contact</a>
+                        </li>
+                    </ul>
+                    @*<div class="tab-content m-t-15" id="myTabContentJustified">
+                        <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab-justified">
+                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                        </div>
+                        <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab-justified">
+                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                        </div>
+                        <div class="tab-pane fade" id="contact-justified" role="tabpanel" aria-labelledby="contact-tab-justified">
+                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                        </div>
+                    </div>*@
+                    <div class="tab-content m-t-15" id="myTabContentJustified">
+                        <div class="tab-pane fade show active" id="home-justified" aria-labelledby="home-tab-justified">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label class="font-weight-semibold" for="productName">Tên sản phẩm</label>
+                                        <input type="text" class="form-control" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-semibold" for="productBrand">Ảnh đại diện</label>
+                                        <input name="fThumb" type="file" class="form-control-file"  />
+                                        <span  class="text-danger"></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-semibold" for="productPrice">Giá bán</label>
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-semibold" for="productPrice">Giảm Giá</label>
+                                            @*<input type="text" class="form-control" asp-for="Discount">*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab-justified">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label class="font-weight-semibold" for="productCategory">Danh mục sản phẩm</label>
+                                            <select class="custom-select"  style="min-width: 200px;" asp-items="ViewBag.productTypeId">
+                                                <option value="" disabled selected>Chọn danh mục</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label class="font-weight-semibold" for="productName">Tác Giả</label>
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label class="font-weight-semibold" for="productName">Số Lượng</label>
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label class="font-weight-semibold" for="productBrand">Ảnh Chi Tiết</label>
+                                            @*<input name="fThumb" type="file" class="form-control-file" asp-for="Thumb" />
+                                            <span asp-validation-for="Thumb" class="text-danger"></span>*@
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="m-t-25">
+                                            <div class="form-group d-flex align-items-center">
+                                                <div class="switch m-r-10">
+                                                    <input type="checkbox" asp-for="Status" checked="">
+                                                    <label for="Status"></label>
+                                                </div>
+                                                <label>Trang Thái</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="contact-justified" role="tabpanel" aria-labelledby="contact-tab-justified">
+                            <div class="card">
+                                <div class="card-body">
+                                    <textarea class="summernote" @*asp-for="Describe"*@></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Wrapper END -->   
+</div>
+<!-- Page Container END -->

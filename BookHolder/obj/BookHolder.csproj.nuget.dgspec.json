@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder.csproj": {}
+    "C:\\Users\\DELL\\Desktop\\DaAn_TotNghiep\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder\\BookHolder\\BookHolder.csproj": {}
   },
   "projects": {
-    "A:\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder.csproj": {
+    "C:\\Users\\DELL\\Desktop\\DaAn_TotNghiep\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder\\BookHolder\\BookHolder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\DaAn_TotNghiep\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder\\BookHolder\\BookHolder.csproj",
         "projectName": "BookHolder",
-        "projectPath": "A:\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder.csproj",
+        "projectPath": "C:\\Users\\DELL\\Desktop\\DaAn_TotNghiep\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder\\BookHolder\\BookHolder.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "A:\\DA_TotNghiep\\BookHolder\\BookHolder\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\Desktop\\DaAn_TotNghiep\\DA_TotNghiep\\BookHolder\\BookHolder\\BookHolder\\BookHolder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +40,27 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AspNetCoreHero.ToastNotification": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "PagedList.Core.Mvc": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             }
           },
           "imports": [

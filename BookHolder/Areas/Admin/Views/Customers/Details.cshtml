@@ -1,0 +1,67 @@
+﻿@model BookHolder.Areas.Admin.Models.Customers
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="AdminIndex" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="breadcrumb-item">Danh sách Tài khoản</a>
+            <span class="breadcrumb-item active">Thông tin Tìa Khoản</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card-body">
+    <h4 class="card-title">Thông tin quyền truy cập</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td class="text-dark font-weight-semibold">@Model.Id</td>
+                </tr>
+                <tr>
+                    <td>Tên:</td>
+                    <td>@Model.CustomerName</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>Số ĐT:</td>
+                    <td>@Model.Phone</td>
+                </tr>
+                <tr>
+                    <td>Địa Chỉ:</td>
+                    <td>@Model.Address</td>
+                </tr>
+                <tr>
+                    <td>Trạng Thái</td>
+                    <td>
+                        @if (Model.Status)
+                        {
+                            <div class="switch m-r-10">
+                                <input type="checkbox" id="switch-1" checked="" disabled />
+                                <label for="switch-1"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="switch m-r-10">
+                                <input type="checkbox" id="switch-1" disabled />
+                                <label for="switch-1"></label>
+                            </div>
+                        }
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
