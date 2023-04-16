@@ -5,63 +5,86 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="page-header">
-    <div class="header-sub-title">
-        <nav class="breadcrumb breadcrumb-dash">
-            <a asp-area="Admin" asp-controller="Home" asp-action="AdminIndex" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
-            <a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="breadcrumb-item">Danh sách Tài khoản</a>
-            <span class="breadcrumb-item active">Thông tin Tìa Khoản</span>
-        </nav>
-    </div>
-</div>
+<div class="page-container">
 
-<div class="card-body">
-    <h4 class="card-title">Thông tin quyền truy cập</h4>
-    <div class="table-responsive">
-        <table class="product-info-table m-t-20">
-            <tbody>
-                <tr>
-                    <td>ID:</td>
-                    <td class="text-dark font-weight-semibold">@Model.Id</td>
-                </tr>
-                <tr>
-                    <td>Tên:</td>
-                    <td>@Model.CustomerName</td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td>@Model.Email</td>
-                </tr>
-                <tr>
-                    <td>Số ĐT:</td>
-                    <td>@Model.Phone</td>
-                </tr>
-                <tr>
-                    <td>Địa Chỉ:</td>
-                    <td>@Model.Address</td>
-                </tr>
-                <tr>
-                    <td>Trạng Thái</td>
-                    <td>
-                        @if (Model.Status)
-                        {
-                            <div class="switch m-r-10">
-                                <input type="checkbox" id="switch-1" checked="" disabled />
-                                <label for="switch-1"></label>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="switch m-r-10">
-                                <input type="checkbox" id="switch-1" disabled />
-                                <label for="switch-1"></label>
-                            </div>
-                        }
-                    </td>
-                </tr>
+    <!-- Content Wrapper START -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="header-sub-title">
+                <nav class="breadcrumb breadcrumb-dash">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="AdminIndex" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                    <a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="breadcrumb-item">Danh sách Tài khoản</a>
+                    <span class="breadcrumb-item active">Thông tin Tìa Khoản</span>
+                </nav>
+            </div>
+        </div>
 
-            </tbody>
-        </table>
+        <div class="page-header no-gutters has-tab">
+            <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                <div class="media align-items-center m-b-15">
+                    <div class="avatar avatar-image rounded" style="height: 70px; width: 70px">
+                        <img src="assets/images/others/thumb-16.jpg" alt="">
+                    </div>
+                    <div class="m-l-15">
+                        <h4 class="m-b-0">@Model.CustomerName</h4>
+                        <p class="text-muted m-b-0">ID: @Model.RoleId</p>
+                    </div>
+                </div>              
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="tab-content m-t-15">
+                <div class="tab-pane fade show active" id="product-overview">                   
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Thông Tin Chi Tiết</h4>
+                            <div class="table-responsive">
+                                <table class="product-info-table m-t-20">
+                                    <tbody>
+                                        <tr>
+                                            <td>Id:</td>
+                                            <td class="text-dark font-weight-semibold">@Model.Id</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tên Khách Hàng:</td>
+                                            <td>	@Model.CustomerName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số ĐT:</td>
+                                            <td>@Model.Phone</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Địa Chỉ:</td>
+                                            <td>@Model.Address</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trạng Thái</td>
+                                            <td>
+                                                @if (Model.Status)
+                                                {
+                                                    <div class="switch m-r-10">
+                                                        <input type="checkbox" id="switch-1" checked="" disabled />
+                                                        <label for="switch-1"></label>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="switch m-r-10">
+                                                        <input type="checkbox" id="switch-1" disabled />
+                                                        <label for="switch-1"></label>
+                                                    </div>
+                                                }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>               
+            </div>
+        </div>
     </div>
+    <!-- Content Wrapper END -->
 </div>
 

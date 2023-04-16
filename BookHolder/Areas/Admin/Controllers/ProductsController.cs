@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookHolder.Areas.Admin.Data;
 using BookHolder.Areas.Admin.Models;
+using BookHolder.Helpper;
+using AspNetCoreHero.ToastNotification.Abstractions;
+using System.IO;
 
 namespace BookHolder.Areas.Admin.Controllers
 {
@@ -14,10 +17,12 @@ namespace BookHolder.Areas.Admin.Controllers
     public class ProductsController : Controller
     {
         private readonly BookholderContext _context;
+        public INotyfService _notyfySerice { get; }
 
-        public ProductsController(BookholderContext context)
+        public ProductsController(BookholderContext context, INotyfService notyfySerice)
         {
             _context = context;
+            _notyfySerice = notyfySerice;
         }
 
         // GET: Admin/Products
@@ -58,15 +63,28 @@ namespace BookHolder.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ProductName,image,ImageID,Price,Quantity,Describe,release,author,dateTime,Category,productTypeId,View_Product,Status")] Products products)
+        public async Task<IActionResult> Create([Bind("Id,ProductName,ShortDesc,Description,CatId,Price,Discount,Thumb,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitsInStock")] Products products, Microsoft.AspNetCore.Http.IFormFile fThumb)
         {
             if (ModelState.IsValid)
             {
+
+                products.ProductName = Utilities.ToTitleCase(products.ProductName);
+                if (fThumb != null)
+                {
+                    string extension = Path.GetExtension(fThumb.FileName);
+                    string image = Utilities.SEOUrl(products.ProductName) + extension;
+                    products.image = await Utilities.UploadFile(fThumb, @"products", image.ToLower());
+                }
+                if (string.IsNullOrEmpty(products.image)) products.image = "default.jpg";
+                _notyfySerice.Success("Thêm mới thành công");
                 _context.Add(products);
                 await _context.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["productTypeId"] = new SelectList(_context.ProductTypes, "Id", "Id", products.productTypeId);
+
+            ViewData["productTypeId"] = new SelectList(_context.ProductTypes, "Id", "Name", products.productTypeId);
+
             return View(products);
         }
 
@@ -150,6 +168,7 @@ namespace BookHolder.Areas.Admin.Controllers
             var products = await _context.Products.FindAsync(id);
             _context.Products.Remove(products);
             await _context.SaveChangesAsync();
+            _notyfySerice.Success("Xóa Sản Phẩm công");
             return RedirectToAction(nameof(Index));
         }
 

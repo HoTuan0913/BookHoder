@@ -489,4 +489,4 @@ C:\Users\DELL\Desktop\DaAn_TotNghiep\DA_TotNghiep\BookHolder\BookHolder\BookHold
 C:\Users\DELL\Desktop\DaAn_TotNghiep\DA_TotNghiep\BookHolder\BookHolder\BookHolder\BookHolder\bin\Debug\net5.0\PagedList.Core.Mvc.dll
 C:\Users\DELL\Desktop\DaAn_TotNghiep\DA_TotNghiep\BookHolder\BookHolder\BookHolder\BookHolder\obj\Debug\net5.0\BookHolder.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\DELL\Desktop\DaAn_TotNghiep\DA_TotNghiep\BookHolder\BookHolder\BookHolder\BookHolder\obj\Debug\net5.0\staticwebassets\BookHolder.StaticWebAssets.xml
-C:\Users\DELL\Desktop\DaAn_TotNghiep\DA_TotNghiep\BookHolder\BookHolder\BookHolder\BookHolder\bin\Debug\net5.0\ref\BookHolder.dll
+C:\Users\DELL\Desktop\DaAn_TotNghiep\DA_TotNghiep\BookHolder\BookHolder\BookHolder\BookHolder\obj\Debug\net5.0\refint\BookHolder.dll

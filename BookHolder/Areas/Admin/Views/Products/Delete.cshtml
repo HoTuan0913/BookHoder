@@ -4,96 +4,93 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Products</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Describe)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Describe)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.release)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.release)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.dateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.dateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.productType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.productType.Id)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.View_Product)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.View_Product)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="page-container">
+    <!-- Content Wrapper START -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="header-sub-title">
+                <nav class="breadcrumb breadcrumb-dash">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="AdminIndex" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                    <a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="breadcrumb-item">Danh sách Tài khoản</a>
+                    <span class="breadcrumb-item active">Xóa Tài Khoản: @Model.ProductName</span>
+                </nav>
+            </div>
+        </div>
+        <div class="page-header no-gutters has-tab">
+            <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                <div class="media align-items-center m-b-15">
+                    <div class="avatar avatar-image rounded" style="height: 70px; width: 70px">
+                        <img src="~/imageProduct/products/@Model.image" alt="">
+                    </div>
+                    <div class="m-l-15">
+                        <h4 class="m-b-0">@Model.ProductName</h4>
+                        <p class="text-muted m-b-0">ID: @Model.Id</p>
+                    </div>
+                </div>
+                <div class="m-b-15">
+                    <form class="btn btn-primary" asp-action="Delete" asp-route-id="@Model.Id">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Xóa" class="btn btn-primary" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="tab-content m-t-15">
+                <div class="tab-pane fade show active" id="product-overview">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Thông Tin Chi Tiết</h4>
+                            <div class="table-responsive">
+                                <table class="product-info-table m-t-20">
+                                    <tbody>
+                                        <tr>
+                                            <td>Id:</td>
+                                            <td class="text-dark font-weight-semibold">@Model.Id</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tên Sản Phẩm:</td>
+                                            <td>	@Model.ProductName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tác Giả:</td>
+                                            <td>@Model.author</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Loại Sản Phẩm:</td>
+                                            <td>@Model.Category</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số Lượng:</td>
+                                            <td>@Model.Quantity</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trạng Thái</td>
+                                            <td>
+                                                @if (Model.Status)
+                                                {
+                                                    <div class="switch m-r-10">
+                                                        <input type="checkbox" id="switch-1" checked="" disabled />
+                                                        <label for="switch-1"></label>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="switch m-r-10">
+                                                        <input type="checkbox" id="switch-1" disabled />
+                                                        <label for="switch-1"></label>
+                                                    </div>
+                                                }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Wrapper END -->
 </div>

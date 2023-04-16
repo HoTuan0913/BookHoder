@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookHolder.Areas.Admin.Data;
 using BookHolder.Areas.Admin.Models;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace BookHolder.Areas.Admin.Controllers
 {
@@ -14,10 +15,12 @@ namespace BookHolder.Areas.Admin.Controllers
     public class CustomersController : Controller
     {
         private readonly BookholderContext _context;
+        public INotyfService _notyfySerice { get; }
 
-        public CustomersController(BookholderContext context)
+        public CustomersController(BookholderContext context, INotyfService notyfService)
         {
             _context = context;
+            _notyfySerice = notyfService;
         }
 
         // GET: Admin/Customers
@@ -104,12 +107,14 @@ namespace BookHolder.Areas.Admin.Controllers
                 try
                 {
                     _context.Update(customers);
+                    _notyfySerice.Success("Chỉnh sửa tài khoản thành công");
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!CustomersExists(customers.Id))
                     {
+                        _notyfySerice.Warning("Tạo phân quyền thất bại");
                         return NotFound();
                     }
                     else
@@ -150,6 +155,7 @@ namespace BookHolder.Areas.Admin.Controllers
             var customers = await _context.Customers.FindAsync(id);
             _context.Customers.Remove(customers);
             await _context.SaveChangesAsync();
+            _notyfySerice.Success("Xóa tài khoản thành công");
             return RedirectToAction(nameof(Index));
         }
 

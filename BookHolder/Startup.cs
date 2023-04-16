@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using BookHolder.Areas.Admin.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +29,12 @@ namespace BookHolder
         {
             services.AddControllersWithViews();
             services.AddDbContext<BookholderContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BookHolder")));
+            services.AddNotyf(config =>
+            {
+                config.DurationInSeconds = 3;
+                config.IsDismissable = true;
+                config.Position = NotyfPosition.TopRight;
+            });           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +54,8 @@ namespace BookHolder
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseNotyf();
 
             app.UseAuthorization();
 

@@ -11,7 +11,7 @@
         <div class="page-header">
             <div class="header-sub-title">
                 <nav class="breadcrumb breadcrumb-dash">
-                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang Chủ</a>
                     @*<a class="breadcrumb-item" href="#">Tables</a>*@
                     <span class="breadcrumb-item active">Danh Sách Khách Hàng</span>
                 </nav>
@@ -41,12 +41,29 @@
                                         <td>@item.CustomerName</td>
                                         <td>@item.Phone</td>
                                         <td>@item.Address</td>
-                                        <td>@item.Status</td>
                                         <td>
-                                            <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="Customers" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
-                                            <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="Customers" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
-                                            <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="Customers" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
-
+                                            @if (item.Status)
+                                            {
+                                                <div class="d-flex align-items-center">
+                                                    <div class="badge badge-success badge-dot m-r-10"></div>
+                                                    <div>Hoạt Động</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="d-flex align-items-center">
+                                                    <div class="badge badge-danger badge-dot m-r-10"></div>
+                                                    <div>Chặn</div>
+                                                </div>                                               
+                                            }
+                                        </td>
+                                        <td class="text-right">
+                                            <button class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
+                                                <a asp-area="Admin" asp-controller="Customers" asp-action="Edit" asp-route-id="@item.Id"><i class="anticon anticon-edit"></i></a>
+                                            </button>
+                                            <button class="btn btn-icon btn-hover btn-sm btn-rounded">
+                                                <a asp-area="Admin" asp-controller="Customers" asp-action="Delete" asp-route-id="@item.Id"><i class="anticon anticon-delete"></i></a>
+                                            </button>
                                         </td>
 
                                     </tr>

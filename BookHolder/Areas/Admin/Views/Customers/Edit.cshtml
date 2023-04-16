@@ -4,71 +4,97 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="page-container">
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <!-- Content Wrapper START -->
+        <div class="main-content">
+            <div class="page-header">
+                <div class="header-sub-title">
+                    <nav class="breadcrumb breadcrumb-dash">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="AdminIndex" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                        <a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="breadcrumb-item">Danh sách Tài khoản</a>
+                        <span class="breadcrumb-item active">Xóa Tài Khoản: @Model.CustomerName</span>
+                    </nav>
+                </div>
+            </div>
+            <div class="page-header no-gutters has-tab">
+                <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                    <div class="media align-items-center m-b-15">
+                        <div class="avatar avatar-image rounded" style="height: 70px; width: 70px">
+                            <img src="assets/images/others/thumb-16.jpg" alt="">
+                        </div>
+                        <div class="m-l-15">
+                            <h4 class="m-b-0">@Model.CustomerName</h4>
+                            <p class="text-muted m-b-0">ID: @Model.RoleId</p>
+                        </div>
+                    </div>
+                    <div class="m-b-15">
+                        @*<button class="btn btn-primary">
+                            <i class="anticon anticon-edit"></i>
+                            <span>Edit</span>
+                        </button>*@
+                        <div class="form-group col-md-8">
+                            <div class="col-sm-8">
+                                <button type="submit" class="btn btn-primary">Thay Đổi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="tab-content m-t-15">
+                    <div class="tab-pane fade show active" id="product-overview">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Thông Tin Chi Tiết</h4>
 
-<h4>Customers</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CustomerName" class="control-label"></label>
-                <input asp-for="CustomerName" class="form-control" />
-                <span asp-validation-for="CustomerName" class="text-danger"></span>
+
+                                <div class="form-group">
+                                    <div class="form-group col-md-6">
+                                        <label class="col-sm-2 col-form-label">Tên</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" asp-for="CustomerName" placeholder="Tên">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" asp-for="Email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-sm-2 col-form-label">Số ĐT</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" asp-for="Phone" placeholder="phone">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-sm-2 col-form-label">Địa Chỉ</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" asp-for="Address" placeholder="Địa chỉ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <div class="switch m-r-10">
+                                            <input type="checkbox" asp-for="Status">
+                                            <label for="Status"></label>
+                                        </div>
+                                        <label>Trạng Thái</label>
+                                    </div>
+
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RoleId" class="control-label"></label>
-                <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
-                <span asp-validation-for="RoleId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Brithday" class="control-label"></label>
-                <input asp-for="Brithday" class="form-control" />
-                <span asp-validation-for="Brithday" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        </div>
+        <!-- Content Wrapper END -->
+    </form>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

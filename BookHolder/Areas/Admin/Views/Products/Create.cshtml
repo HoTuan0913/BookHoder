@@ -4,83 +4,153 @@
     ViewData["Title"] = "Create";
 }
 
-<div id="content-page" class="content-page">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="iq-card">
-                    <div class="iq-card-header d-flex justify-content-between">
-                        <div class="iq-header-title">
-                            <h4 class="card-title">Thêm sách</h4>
+<!-- Page Container START -->
+<div class="page-container">
+
+
+    <!-- Content Wrapper START -->
+    <div class="main-content">
+        <form asp-area="Admin" asp-controller="Products" asp-action="Create" method="post" enctype="multipart/form-data">
+            <div class="page-header">
+                <div class="header-sub-title">
+                    <nav class="breadcrumb breadcrumb-dash">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Tranh Chủ</a>
+                        <a class="breadcrumb-item" asp-area="Admin" asp-controller="Products" asp-action="Index">Danh Sách Sản Phẩm</a>
+                        <span class="breadcrumb-item active">Tạo Sản Phẩm</span>
+                    </nav>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                        <div class="m-b-15">
+                            <button class="btn btn-primary">
+                                <i class="anticon anticon-save"></i>
+                                <span>Lưu</span>
+                            </button>
                         </div>
                     </div>
-                    <div class="iq-card-body">
-                        <form asp-area="Admin" asp-controller="Products" asp-action="Create">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label>Tên sách:</label>    
-                                <input asp-for="ProductName" type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Danh mục sách:</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option selected="" disabled="">Danh mục sách</option>
-                                    <option>General Books</option>
-                                    <option>History Books</option>
-                                    <option>Horror Story</option>
-                                    <option>Arts Books</option>
-                                    <option>Film & Photography</option>
-                                    <option>Business & Economics</option>
-                                    <option>Comics & Mangas</option>
-                                    <option>Computers & Internet</option>
-                                    <option> Sports</option>
-                                    <option> Travel & Tourism</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Tác gải sách:</label>
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                    <option selected="" disabled="">Tác giả sách</option>
-                                    <option>Jhone Steben</option>
-                                    <option>John Klok</option>
-                                    <option>Ichae Semos</option>
-                                    <option>Jules Boutin</option>
-                                    <option>Kusti Franti</option>
-                                    <option>David King</option>
-                                    <option>Henry Jurk</option>
-                                    <option>Attilio Marzi</option>
-                                    <option>Argele Intili</option>
-                                    <option>Attilio Marzi</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Hình ảnh:</label>
-                                <div class="custom-file">
-                                    <input asp-for="image" type="file" class="custom-file-input" accept="image/png, image/jpeg">
-                                    <label class="custom-file-label">Choose file</label>
+                    <div class="m-t-25">
+                        <ul class="nav nav-tabs nav-justified" id="myTabJustified" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab-justified" data-toggle="tab" href="#home-justified" role="tab" aria-controls="home-justified" aria-selected="true">Giao Diện</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab-justified" data-toggle="tab" href="#profile-justified" role="tab" aria-controls="profile-justified" aria-selected="false">Chi Tiết</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="contact-tab-justified" data-toggle="tab" href="#contact-justified" role="tab" aria-controls="contact-justified" aria-selected="false">Nội Dung</a>
+                            </li>
+                        </ul>
+                        @*<div class="tab-content m-t-15" id="myTabContentJustified">
+                        <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab-justified">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                        </div>
+                        <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab-justified">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                        </div>
+                        <div class="tab-pane fade" id="contact-justified" role="tabpanel" aria-labelledby="contact-tab-justified">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                        </div>
+                        </div>*@
+                        <div class="tab-content m-t-15" id="myTabContentJustified">
+                            <div class="tab-pane fade show active" id="home-justified" aria-labelledby="home-tab-justified">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label class="font-weight-semibold" for="productName">Tên sản phẩm</label>
+                                            <input type="text" class="form-control" asp-for="ProductName">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="font-weight-semibold" for="productBrand">Ảnh đại diện</label>
+                                            <input name="fThumb" type="file" class="form-control-file" asp-for="image" />
+                                            <span asp-validation-for="image" class="text-danger"></span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-semibold" for="productPrice">Giá bán</label>
+                                                <input type="text" class="form-control" asp-for="Price">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-semibold" for="productPrice">Giảm Giá</label>
+                                                @*<input type="text" class="form-control" asp-for="Discount">*@
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Sách pdf:</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" accept="application/pdf, application/vnd.ms-excel">
-                                    <label class="custom-file-label">Chọn file</label>
+                            <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab-justified">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label class="font-weight-semibold" for="productCategory">Danh mục sản phẩm</label>
+                                                <select class="custom-select" style="min-width: 200px;" asp-items="ViewBag.productTypeId">
+                                                    <option value="" disabled selected>Chọn danh mục</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="font-weight-semibold" for="productName">Tác Giả</label>
+                                                <input type="text" class="form-control" asp-for="author">
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="font-weight-semibold" for="productName">Số Lượng</label>
+                                                <input type="text" class="form-control" asp-for="Quantity">
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="font-weight-semibold" for="productBrand">Ảnh Chi Tiết</label>
+                                                @*<input name="fThumb" type="file" class="form-control-file" asp-for="Thumb" />
+                                                <span asp-validation-for="Thumb" class="text-danger"></span>*@
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="m-t-25">
+                                                <div class="form-group d-flex align-items-center">
+                                                    <div class="switch m-r-10">
+                                                        <input type="checkbox" asp-for="Status" checked="">
+                                                        <label for="Status"></label>
+                                                    </div>
+                                                    <label>Trang Thái</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Giá sách:</label>
-                                <input asp-for="Price" type="text" class="form-control">
+                            <div class="tab-pane fade" id="contact-justified" role="tabpanel" aria-labelledby="contact-tab-justified">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <textarea class="summernote" @*asp-for="Describe"*@></textarea>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Nội dung:</label>
-                                <textarea asp-for="Describe" class="form-control" rows="4"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-primary">Gửi</button>
-                            <button type="reset" class="btn btn-danger">Trở lại</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
+    <!-- Content Wrapper END -->
 </div>
+<!-- Page Container END -->
+@section Scripts{
+    <script src="~/assetsAdmin/vendors/select2/select2.min.js"></script>
+    <script src="~/assetsAdmin/js/pages/e-commerce-product-edit.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="~/assetsAdmin/summernote/summernote-bs4.js"></script>
+
+    <script>
+
+        jQuery(document).ready(function () {
+            $('.summernote').summernote({
+                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+                styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5'],
+                height: 200,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        });
+    </script>
+}

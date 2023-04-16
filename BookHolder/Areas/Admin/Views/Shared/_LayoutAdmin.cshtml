@@ -362,7 +362,8 @@
 
     <!-- Core JS -->
     <script src="~/assetsAdmin/js/app.min.js"></script>
-
+    @await Component.InvokeAsync("Notyf")
+    @await RenderSectionAsync("Scripts",required:false)
 </body>
 
 </html>
